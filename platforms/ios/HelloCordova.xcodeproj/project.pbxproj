@@ -12,6 +12,7 @@
 		1D3623260D0F684500981E51 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* AppDelegate.m */; };
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		200B98106B394689B7F42FB6 /* CDVBackgroundGeolocation.m in Sources */ = {isa = PBXBuildFile; fileRef = F55E8142DC65403F863FC0BF /* CDVBackgroundGeolocation.m */; };
+		2DB658531CB0AEDB005672E4 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DB658521CB0AEDB005672E4 /* MapKit.framework */; };
 		301BF552109A68D80062928A /* libCordova.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 301BF535109A57CC0062928A /* libCordova.a */; };
 		302D95F114D2391D003F00A1 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 302D95EF14D2391D003F00A1 /* MainViewController.m */; };
 		302D95F214D2391D003F00A1 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 302D95F014D2391D003F00A1 /* MainViewController.xib */; };
@@ -59,6 +60,7 @@
 		1D8A6C4EFD344F61A23C6309 /* CDVPlugin+APPAppEvent.m */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.objc; name = "CDVPlugin+APPAppEvent.m"; path = "cordova-plugin-app-event/CDVPlugin+APPAppEvent.m"; sourceTree = "<group>"; };
 		270B26C89E5B4C01BF7E2852 /* CDVNotification.m */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.objc; name = CDVNotification.m; path = "cordova-plugin-dialogs/CDVNotification.m"; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		2DB658521CB0AEDB005672E4 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		301BF52D109A57CC0062928A /* CordovaLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CordovaLib.xcodeproj; path = CordovaLib/CordovaLib.xcodeproj; sourceTree = "<group>"; };
 		301BF56E109A69640062928A /* www */ = {isa = PBXFileReference; lastKnownFileType = folder; path = www; sourceTree = SOURCE_ROOT; };
 		302D95EE14D2391D003F00A1 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
@@ -106,6 +108,7 @@
 				6464ABD00E144148B57F4CAF /* AudioToolbox.framework in Frameworks */,
 				898C7976C71E4BD9871060AD /* SystemConfiguration.framework in Frameworks */,
 				7FD08C15ABDB4A5586974221 /* AVFoundation.framework in Frameworks */,
+				2DB658531CB0AEDB005672E4 /* MapKit.framework in Frameworks */,
 				CA948EA9B1684CBCA7A9466D /* libsqlite3.dylib in Frameworks */,
 				D87C87C2A1C14B83B6231EA3 /* TSLocationManager.framework in Frameworks */,
 			);
@@ -178,6 +181,7 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2DB658521CB0AEDB005672E4 /* MapKit.framework */,
 				C5E7211EF1A14DA3AC90B3F5 /* AudioToolbox.framework */,
 				9776B5E59B8F4C9EBF0FB768 /* SystemConfiguration.framework */,
 				45483E18C2CD497894C6E8D0 /* AVFoundation.framework */,
@@ -273,6 +277,11 @@
 				TargetAttributes = {
 					1D6058900D05DD3D006BFB54 = {
 						DevelopmentTeam = 3DXF78KR98;
+						SystemCapabilities = {
+							com.apple.Maps.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
