@@ -49,12 +49,11 @@ var app = {
             // Simulate doing some extra work with a bogus setTimeout.  This could perhaps be an Ajax request to your server.
             // The point here is that you must execute bgGeo.finish after all asynchronous operations within the callback are complete.
 
-
             cordova.plugins.notification.local.schedule(
                 {
-                id: 1,
-                title: 'Lokasyon',
-                text: 'Lon : ' + lng + " Latitute : " + lat
+                    id: 1,
+                    title: 'Lokasyon',
+                    text: 'Lon : ' + lng + " Latitute : " + lat
                 }
             );
 
@@ -64,7 +63,14 @@ var app = {
         };
 
         var failureFn = function(error) {
-            console.log('BackgroundGeoLocation error');
+            cordova.plugins.notification.local.schedule(
+                {
+                    id: 1,
+                    title: 'Hata!',
+                    text: 'Arka planda konumunu alamıyorum :('
+                }
+            );
+
         };
 
         // BackgroundGeoLocation is highly configurable.
@@ -72,8 +78,8 @@ var app = {
             // Geolocation config
             desiredAccuracy: 0,
             stationaryRadius: 50,
-            distanceFilter: 50,
-            disableElasticity: true, // <-- [iOS] Default is 'false'.  Set true to disable speed-based distanceFilter elasticity
+            distanceFilter: 5, // 50 mt'de bir çalışacak
+            disableElasticity: false, // <-- [iOS] Default is 'false'.  Set true to disable speed-based distanceFilter elasticity
             locationUpdateInterval: 5000,
             minimumActivityRecognitionConfidence: 80,   // 0-100%.  Minimum activity-confidence for a state-change
             fastestLocationUpdateInterval: 5000,
@@ -103,6 +109,30 @@ var app = {
                 "auth_token": "maybe_your_server_authenticates_via_token_YES?"
             }
         });
+
+        bgGeo.onMotionChange(function(isMoving, location, taskId) {
+            if (isMoving) {
+                cordova.plugins.notification.local.schedule(
+                    {
+                        id: 1,
+                        title: 'Yürüyorsun',
+                        text: 'Lon: ' + location.longitude + " Latitute: " + location.latitude + " Accuraty: " + location.accuracy + " Speed: " + location.speed
+                    }
+                );
+            } else {
+                cordova.plugins.notification.local.schedule(
+                    {
+                        id: 1,
+                        title: 'Durdun!',
+                        text: 'Lon: ' + location.longitude + " Latitute: " + location.latitude + " Accuraty: " + location.accuracy + " Speed: " + location.speed
+                    }
+                );
+            }
+            bgGeo.finish(taskId);
+        });
+
+        //todo addGeofence mekanlar
+        //todo getOdometer mesafe
 
         // Turn ON the background-geolocation system.  The user will be tracked whenever they suspend the app.
         bgGeo.start();
