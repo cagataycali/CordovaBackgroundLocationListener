@@ -90,8 +90,8 @@ var app = {
 
             // Application config
             debug: false, // <-- enable this hear sounds for background-geolocation life-cycle.
-            forceReloadOnLocationChange: false,  // <-- [Android] If the user closes the app **while location-tracking is started** , reboot app when a new location is recorded (WARNING: possibly distruptive to user)
-            forceReloadOnMotionChange: false,    // <-- [Android] If the user closes the app **while location-tracking is started** , reboot app when device changes stationary-state (stationary->moving or vice-versa) --WARNING: possibly distruptive to user)
+            forceReloadOnLocationChange: true,  // <-- [Android] If the user closes the app **while location-tracking is started** , reboot app when a new location is recorded (WARNING: possibly distruptive to user)
+            forceReloadOnMotionChange: true,    // <-- [Android] If the user closes the app **while location-tracking is started** , reboot app when device changes stationary-state (stationary->moving or vice-versa) --WARNING: possibly distruptive to user)
             forceReloadOnGeofence: false,        // <-- [Android] If the user closes the app **while location-tracking is started** , reboot app when a geofence crossing occurs --WARNING: possibly distruptive to user)
             stopOnTerminate: false,              // <-- [Android] Allow the background-service to run headless when user closes the app.
             startOnBoot: true,                   // <-- [Android] Auto start background-service in headless mode when device is powered-up.
